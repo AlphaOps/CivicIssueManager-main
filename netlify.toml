@@ -9,4 +9,4 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  VITE_API_URL = "https://civicissuemanager-main.onrender.com"
+  VITE_API_URL = "https://civicissuemanager-main-production.up.railway.app"
