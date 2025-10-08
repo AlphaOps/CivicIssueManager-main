@@ -10,8 +10,6 @@ router.get('/', authenticateToken, async (req: AuthRequest, res: Response) => {
     const notifications = await Notification.find({ user_id: req.user!.id }).sort({ created_at: -1 });
     res.json(notifications);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Get notifications error:', error);
     res.status(500).json({ error: 'Failed to fetch notifications' });
   }
 });
@@ -31,8 +29,6 @@ router.patch('/:id/read', authenticateToken, async (req: AuthRequest, res: Respo
 
     res.json(notification);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Mark read error:', error);
     res.status(500).json({ error: 'Failed to update notification' });
   }
 });
@@ -43,8 +39,6 @@ router.patch('/read-all', authenticateToken, async (req: AuthRequest, res: Respo
     await Notification.updateMany({ user_id: req.user!.id, read: false }, { read: true });
     res.json({ message: 'All notifications marked as read' });
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Mark all read error:', error);
     res.status(500).json({ error: 'Failed to update notifications' });
   }
 });
